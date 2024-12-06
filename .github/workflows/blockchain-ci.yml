@@ -38,7 +38,10 @@ jobs:
             ${{ runner.os }}-poetry-
 
       - name: Debug Cache Key
-        run: echo "Cache key ${{ steps.cache-dependencies.outputs.cache-key }}"
+        run: |
+          echo "Cache key: ${{ steps.cache-dependencies.outputs.cache-key }}"
+          echo "Cache hit: ${{ steps.cache-dependencies.outputs.cache-hit }}"
+          echo "Cache hit: ${{ steps.cache-dependencies.outputs.poetry-cache-key }}"
 
       - name: Install Dependencies
         run: poetry install --with test
