@@ -19,7 +19,7 @@ blockchain = Blockchain(chain_type=ChainType.ARRAY_CHAIN)
 def index():
     """Serve the landing page."""
     template_path = CURRENT_DIR / "templates" / "index.html"
-    with open(template_path, "r") as f:
+    with open(template_path, "r", encoding="utf-8") as f:
         return HTMLResponse(content=f.read())
 
 
@@ -40,9 +40,9 @@ def mine(request: MineRequest) -> dict:
 @app.post("/transactions/new", status_code=status.HTTP_201_CREATED)
 def new_transaction(transaction: Transaction) -> dict:
     """Create a new transaction and add it to the blockchain."""
-    index = blockchain.add_new_transaction(transaction)
+    idx = blockchain.add_new_transaction(transaction)
 
-    return {"message": f"Transaction will be added to Block {index}."}
+    return {"message": f"Transaction will be added to Block {idx}."}
 
 
 @app.get("/transactions/pending", status_code=status.HTTP_200_OK)

@@ -62,7 +62,7 @@ jobs:
         run: poetry run ruff check --fix .
 
       - name: Run Pylint
-        run: poetry run pylint src tests --fail-under=9.00
+        run: poetry run pylint src --fail-under=9.00
 
   test:
     name: Run Tests

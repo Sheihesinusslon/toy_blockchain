@@ -3,7 +3,7 @@ from blockchain.blockchain_main import Blockchain
 from blockchain.chain_implementations import ChainType
 from blockchain.models import Transaction
 from blockchain.exceptions import MiningException
-from blockchain import GENESIS_HASH, GENESIS_PROOF, NETWORK_SENDER, TRANSACTION_FEE_PERCENTAGE
+from blockchain import GENESIS_HASH, GENESIS_PROOF, TRANSACTION_FEE_PERCENTAGE
 
 
 @pytest.fixture

@@ -1,9 +1,10 @@
 import pytest
 from fastapi.testclient import TestClient
-from blockchain.models import Transaction, MineRequest
+from fastapi import status
+
+from blockchain.models import Transaction
 from blockchain.blockchain_main import Blockchain
 from blockchain.chain_implementations import ChainType
-from fastapi import status
 
 from src.web_service.api import app
 
