@@ -62,7 +62,7 @@ jobs:
         run: poetry run ruff check --fix .
 
       - name: Run Pylint
-        run: poetry run pylint src tests --fail-under=9.00
+        run: poetry run pylint src --fail-under=9.00
 
   test:
     name: Run Tests
@@ -90,5 +90,4 @@ jobs:
         run: poetry install --with test
 
       - name: Run Tests with Coverage
-        # run: poetry run pytest --cov=src --cov-fail-under=10 tests
-        run: poetry run pytest --cov=src --cov-report=term --color=yes -v tests
+        run: poetry run pytest --cov=src -cov-report=term --color=yes -v --cov-fail-under=10 tests

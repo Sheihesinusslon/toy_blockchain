@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blockchain Explorer</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Blockchain Explorer</h1>
+    <p>Visualize the blockchain, interact with pending transactions, and mine new blocks.</p>
+  </header>
+
+  <main>
+    <section id="blockchain-info">
+      <h2>Blockchain Info</h2>
+      <div id="chain-container">
+        <div class="chain">
+          <!-- Blocks will be dynamically added here -->
+        </div>
+      </div>
+      <div id="chain-status">
+        <span id="chain-status-light" class="status-light"></span>
+        <span id="chain-status-text">Valid</span>
+      </div>
+    </section>
+
+    <section id="pending-transactions">
+      <h2>Pending Transactions</h2>
+      <div id="transaction-list">
+        <!-- Pending transactions will be dynamically added here -->
+      </div>
+    </section>
+
+    <section id="actions">
+      <h2>Actions</h2>
+      <div id="forms-container">
+        <form id="transaction-form">
+          <h3>Submit a New Transaction</h3>
+          <label for="sender">Sender:</label>
+          <input type="text" id="sender" name="sender" required>
+          <label for="recipient">Recipient:</label>
+          <input type="text" id="recipient" name="recipient" required>
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" name="amount" required>
+          <button type="submit">Submit Transaction</button>
+        </form>
+
+        <form id="mine-form">
+          <h3>Mine a New Block</h3>
+          <label for="miner-address">Miner Address:</label>
+          <input type="text" id="miner-address" name="miner_address" required>
+          <button type="submit">Mine Block</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Blockchain Explorer by Sheihesinusslon</p>
+  </footer>
+</body>
+</html>

@@ -8,7 +8,11 @@ HashString = NewType("HashString", str)
 class Transaction(BaseModel):
     sender: str
     recipient: str
-    amount: int
+    amount: float
+
+
+class MineRequest(BaseModel):
+    miner_address: str
 
 
 class Block(BaseModel):
