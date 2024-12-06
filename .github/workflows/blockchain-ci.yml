@@ -13,7 +13,8 @@ jobs:
     name: Setup Environment
     runs-on: ubuntu-latest
     env:
-      CACHE_KEY: $poetry-${{ hashFiles('poetry.lock') }}
+      HASH: $(shasum -a 256 poetry.lock | cut -d ' ' -f 1)
+      CACHE_KEY: $poetry-${HASH}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
