@@ -39,7 +39,7 @@ def new_transaction(transaction: Transaction) -> dict:
 
 @app.get("/chain", status_code=status.HTTP_200_OK)
 def full_chain() -> dict:
-    """Return the full blockchain."""
+    """Return the full blockchain"""
     return {
         "chain": blockchain.chain,
         "length": len(blockchain.chain),
