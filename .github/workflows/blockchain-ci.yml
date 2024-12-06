@@ -12,6 +12,8 @@ jobs:
   setup:
     name: Setup Environment
     runs-on: ubuntu-latest
+    env:
+      CACHE_KEY: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,11 +22,6 @@ jobs:
         uses: abatilo/actions-poetry@v2
         with:
           poetry-version: 1.8.4
-
-      - name: Define Cache Key
-        id: define-cache-key
-        run: |
-          echo "CACHE_KEY=${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}" >> $GITHUB_ENV
 
       - name: Cache Poetry Dependencies
         id: cache-dependencies
@@ -58,7 +55,7 @@ jobs:
           path: ~/.cache/pypoetry
           key: ${{ env.CACHE_KEY }}
           restore-keys: |
-            ${{ runner.os }}-poetry-
+            ${{ env.CACHE_KEY }}
 
       - name: Install Poetry
         uses: abatilo/actions-poetry@v2
