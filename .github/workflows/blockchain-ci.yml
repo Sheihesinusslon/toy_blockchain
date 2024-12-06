@@ -44,8 +44,24 @@ jobs:
     needs: setup
 
     steps:
-      - name: Use Setup Environment
+      - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Restore Poetry Cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ needs.setup.outputs.poetry-cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: 1.8.4
+
+      - name: Install Dependencies
+        run: poetry install --with test
 
       - name: Run Ruff (Auto-Formatting)
         run: poetry run ruff check --fix .
@@ -59,8 +75,24 @@ jobs:
     needs: setup
 
     steps:
-      - name: Use Setup Environment
+      - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Restore Poetry Cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ needs.setup.outputs.poetry-cache-key }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
+
+      - name: Install Poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: 1.8.4
+
+      - name: Install Dependencies
+        run: poetry install --with test
 
       - name: Run Tests with Coverage
         run: poetry run pytest --cov=src --cov-fail-under=10 tests
