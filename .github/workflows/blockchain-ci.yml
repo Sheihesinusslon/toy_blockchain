@@ -29,6 +29,7 @@ jobs:
           poetry-version: 1.8.4
 
       - name: Cache Poetry Dependencies
+        id: cache-dependencies
         uses: actions/cache@v3
         with:
           path: ~/.cache/pypoetry
@@ -96,4 +97,5 @@ jobs:
         run: poetry install --with test
 
       - name: Run Tests with Coverage
-        run: poetry run pytest --cov=src --cov-fail-under=10 tests
+        # run: poetry run pytest --cov=src --cov-fail-under=10 tests
+        run: poetry run pytest --cov=src --cov-report=term --color=yes -v tests

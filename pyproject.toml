@@ -25,3 +25,12 @@ ruff = "*"
 line-length = 120
 lint.select = ["E", "W", "F", "C"]
 lint.ignore = ["E501"]
+
+[tool.pylint]
+disable = [
+    "missing-docstring",
+    "too-few-public-methods",
+]
+
+# Other configuration options
+max-line-length = 120
