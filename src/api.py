@@ -10,7 +10,7 @@ blockchain = Blockchain(chain_type=ChainType.ARRAY_CHAIN)
 
 @app.get("/mine", status_code=status.HTTP_200_OK)
 def mine() -> dict:
-    """Mining new block: find the proof of work, then add the block to the chain."""
+    """Mining new block: find the proof of work, then add the block to the chain"""
     last_block = blockchain.chain.last_block
     last_proof = last_block.proof
 
