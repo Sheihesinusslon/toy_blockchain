@@ -7,6 +7,8 @@ from blockchain.models import Transaction
 app = FastAPI()
 blockchain = Blockchain(chain_type=ChainType.ARRAY_CHAIN)
 
+"""sdfasdf"""
+
 
 @app.get("/mine", status_code=status.HTTP_200_OK)
 def mine() -> dict:
