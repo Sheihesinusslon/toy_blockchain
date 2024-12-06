@@ -11,7 +11,7 @@ blockchain = Blockchain(chain_type=ChainType.ARRAY_CHAIN)
 
 @app.get("/mine", status_code=status.HTTP_200_OK)
 def mine() -> dict:
-    """Mining new block: find the proof of work, then add the block to the chain"""
+    """Mining new block: find the proof of work, then add the block to the chain."""
     last_block = blockchain.chain.last_block
     last_proof = last_block.proof
 
@@ -32,7 +32,7 @@ def mine() -> dict:
 
 @app.post("/transactions/new", status_code=status.HTTP_201_CREATED)
 def new_transaction(transaction: Transaction) -> dict:
-    """Create a new transaction and add it to the blockchain"""
+    """Create a new transaction and add it to the blockchain."""
     index = blockchain.add_new_transaction(transaction)
 
     return {"message": f"Transaction will be added to Block {index}."}
@@ -40,7 +40,7 @@ def new_transaction(transaction: Transaction) -> dict:
 
 @app.get("/chain", status_code=status.HTTP_200_OK)
 def full_chain() -> dict:
-    """Return the full blockchain"""
+    """Return the full blockchain."""
     return {
         "chain": blockchain.chain,
         "length": len(blockchain.chain),
