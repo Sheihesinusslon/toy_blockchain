@@ -25,7 +25,7 @@ jobs:
         id: define-cache-key
         run: |
           echo "CACHE_KEY=${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}" >> $GITHUB_ENV
-          echo "Cache Key: $CACHE_KEY"
+          echo "Cache Key: ${{ env.CACHE_KEY }}
 
       - name: Cache Poetry Dependencies
         id: cache-dependencies
@@ -57,7 +57,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pypoetry
-          key: ${{ needs.setup.outputs.CACHE_KEY }}
+          key: ${{ env.CACHE_KEY }}
           restore-keys: |
             ${{ runner.os }}-poetry-
 
@@ -88,7 +88,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pypoetry
-          key: ${{ needs.setup.outputs.CACHE_KEY }}
+          key: ${{ env.CACHE_KEY }}
           restore-keys: |
             ${{ runner.os }}-poetry-
 
