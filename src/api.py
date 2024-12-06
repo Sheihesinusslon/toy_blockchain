@@ -7,7 +7,6 @@ from blockchain.models import Transaction
 app = FastAPI()
 blockchain = Blockchain(chain_type=ChainType.ARRAY_CHAIN)
 
-"""sdfasdf"""
 
 
 @app.get("/mine", status_code=status.HTTP_200_OK)
@@ -17,7 +16,7 @@ def mine() -> dict:
     last_proof = last_block.proof
 
     proof = blockchain.proof_of_work(last_proof)
-    blockchain.add_new_transaction(Transaction(sender="0", recipient="miner_address", amount=1))
+    blockchain.add_new_transaction(Transaction(sender="1", recipient="miner_address", amount=1))
 
     previous_hash = blockchain.hash_(last_block)
     block = blockchain.create_new_block(previous_hash, proof)

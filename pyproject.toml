@@ -31,6 +31,4 @@ disable = [
     "missing-docstring",
     "too-few-public-methods",
 ]
-
-# Other configuration options
 max-line-length = 120
