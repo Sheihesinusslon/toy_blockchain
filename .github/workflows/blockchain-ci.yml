@@ -22,9 +22,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Change Directory to Blockchain
-        run: pwd
-
       - name: Install Poetry
         uses: abatilo/actions-poetry@v2
         with:
