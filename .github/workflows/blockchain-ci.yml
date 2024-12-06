@@ -21,25 +21,14 @@ jobs:
         with:
           poetry-version: 1.8.4
 
-      - name: Set Cache Key
-        id: set-cache-key
-        run: |
-          echo "CACHE_KEY=${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}" >> $GITHUB_ENV
-          echo "Cache key: $CACHE_KEY"
-
       - name: Cache Poetry Dependencies
         id: cache-dependencies
         uses: actions/cache@v3
         with:
           path: ~/.cache/pypoetry
-          key: ${{ env.CACHE_KEY }}
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
           restore-keys: |
             ${{ runner.os }}-poetry-
-
-      - name: Debug Cache Key
-        run: |
-          echo "Cache key: ${{ env.CACHE_KEY }}"
-          echo "Cache hit: ${{ steps.cache-dependencies.outputs.cache-hit }}"
 
       - name: Install Dependencies
         run: poetry install --with test
@@ -88,7 +77,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pypoetry
-          key: ${{ env.CACHE_KEY }}
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
           restore-keys: |
             ${{ runner.os }}-poetry-
 
