@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       cache-hit: ${{ steps.cache-dependencies.outputs.cache-hit }}
+      poetry-cache-key: ${{ steps.cache-dependencies.outputs.cache-key }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
