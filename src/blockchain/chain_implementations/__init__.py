@@ -17,5 +17,3 @@ def create_chain(chain_type: ChainType):
     match chain_type:
         case ChainType.ARRAY_CHAIN:
             return ArrayChain()
-        case _:
-            ArrayChain()
