@@ -25,7 +25,6 @@ jobs:
         id: define-cache-key
         run: |
           echo "CACHE_KEY=${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}" >> $GITHUB_ENV
-          echo "Cache Key: ${{ env.CACHE_KEY }}
 
       - name: Cache Poetry Dependencies
         id: cache-dependencies
