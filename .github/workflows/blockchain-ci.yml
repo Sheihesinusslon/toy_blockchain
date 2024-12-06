@@ -13,7 +13,6 @@ jobs:
     name: Setup Environment
     runs-on: ubuntu-latest
     outputs:
-      poetry-cache-key: ${{ steps.cache-dependencies.outputs.cache-key }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -28,8 +27,6 @@ jobs:
         run: |
           echo "CACHE_KEY=${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}" >> $GITHUB_ENV
           echo "Cache Key: $CACHE_KEY"
-        outputs:
-          cache-key: ${{ steps.define-cache-key.outputs.cache-key }}
 
       - name: Cache Poetry Dependencies
         id: cache-dependencies
@@ -61,7 +58,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pypoetry
-          key: ${{ needs.setup.outputs.poetry-cache-key }}
+          key: ${{ needs.setup.outputs.CACHE_KEY }}
           restore-keys: |
             ${{ runner.os }}-poetry-
 
@@ -92,7 +89,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pypoetry
-          key: ${{ needs.setup.outputs.poetry-cache-key }}
+          key: ${{ needs.setup.outputs.CACHE_KEY }}
           restore-keys: |
             ${{ runner.os }}-poetry-
 
