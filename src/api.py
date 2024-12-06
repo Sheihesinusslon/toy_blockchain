@@ -31,7 +31,7 @@ def mine() -> dict:
 
 @app.post("/transactions/new", status_code=status.HTTP_201_CREATED)
 def new_transaction(transaction: Transaction) -> dict:
-    """Create a new transaction and add it to the blockchain"""
+    """Create a new transaction and add it to the blockchain."""
     index = blockchain.add_new_transaction(transaction)
 
     return {"message": f"Transaction will be added to Block {index}."}
