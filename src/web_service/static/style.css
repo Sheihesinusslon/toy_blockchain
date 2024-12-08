@@ -91,7 +91,7 @@ section {
   display: flex;
   width: 100%; /* Ensure the container takes up the full width of the screen */
   max-width: 100%; /* Remove the max-width restriction */
-  height: 100vh; /* Ensure the container takes up the full height of the page */
+  height: 50vh; /* Ensure the container takes up the full height of the page */
 }
 
 form {
