@@ -1,3 +1,5 @@
+from typing import List
+
 from blockchain.models import Block
 
 
@@ -7,6 +9,10 @@ class ArrayChain:
 
     def add_block(self, block: Block) -> None:
         self.chain.append(block)
+
+    @property
+    def chain_serializable(self) -> List:
+        return self.chain
 
     @property
     def last_block(self) -> Block:

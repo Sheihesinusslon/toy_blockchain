@@ -12,7 +12,7 @@ app = FastAPI(title="Blockchain API")
 CURRENT_DIR = Path(__file__).parent
 STATIC_DIR = CURRENT_DIR / "static"
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
-blockchain = Blockchain(chain_type=ChainType.ARRAY_CHAIN)
+blockchain = Blockchain(chain_type=ChainType.LINKED_LIST_CHAIN)
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -55,7 +55,7 @@ def get_pending_transactions() -> dict:
 def full_chain() -> dict:
     """Return the full blockchain."""
     return {
-        "chain": blockchain.chain.chain,
+        "chain": blockchain.chain.chain_serializable,
         "length": len(blockchain.chain),
         "chain_valid": blockchain.is_chain_valid(),
     }
